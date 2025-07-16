@@ -29,21 +29,11 @@
         .btn-primary:hover {
             background-color: #DC2626;
         }
-        .product-card {
-            border: 1px solid #E5E7EB; /* 淺灰色邊框 */
-            background-color: white;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .product-card.selected {
-            border-color: #F59E0B; /* 橘色邊框，表示選中 */
+        /* 移除 product-card.selected 的樣式，因為卡片將被移除 */
+        /* .product-card.selected {
+            border-color: #F59E0B;
             box-shadow: 0 4px 8px rgba(245, 158, 11, 0.2);
-        }
+        } */
         .quantity-btn {
             background-color: white;
             border: 1px solid #D1D5DB;
@@ -108,7 +98,50 @@
 <body class="p-4 md:p-8">
     <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8">
         <!-- Header -->
-        
+
+<!--
+        <div class="flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-orange-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.807a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.102 1.101m-4.807.758a4 4 0 000 5.656l4 4a4 4 0 005.656 0"></path></svg>
+            <h1 class="text-3xl font-bold text-gray-800">蛋捲團購</h1>
+        </div>
+        <p class="text-center text-gray-600 mb-8">香脆美味，現在訂購享優惠！</p>
+-->
+<!--
+         限時搶購倒數 (靜態展示，無實際功能) 
+        <div class="bg-red-500 text-white p-6 rounded-xl text-center mb-8">
+            <div class="flex items-center justify-center text-lg font-semibold mb-2">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                限時搶購倒數
+            </div>
+            <div class="text-5xl font-bold mb-2">07:58:49</div>
+            <p class="text-sm">錯過就要等下次了！</p>
+        </div>
+-->
+        <!-- 商品選擇區 - 移除大的商品卡片區塊 -->
+        <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div id="original-product-card" class="product-card cursor-pointer" data-product="原味蛋捲" data-price="120">
+                <img src="https://placehold.co/100x100/F59E0B/FFFFFF?text=%E8%9B%8B%E6%8D%B2" alt="原味蛋捲" class="w-24 h-24 mb-4 rounded-full">
+                <h3 class="text-xl font-semibold text-gray-800 mb-1">原味蛋捲</h3>
+                <p class="text-gray-600 text-sm mb-2">經典原味，酥脆香甜</p>
+                <p class="text-orange-600 text-2xl font-bold mb-2">NT$ 120/盒</p>
+                <p class="text-gray-500 text-xs mb-4">每盒12支裝</p>
+                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                    <div class="bg-orange-400 h-2.5 rounded-full" style="width: 3%;"></div>
+                </div>
+                <p class="text-gray-600 text-sm">已訂購: 3/100 盒</p>
+            </div>
+            <div id="sesame-product-card" class="product-card cursor-pointer" data-product="芝麻蛋捲" data-price="150">
+                <img src="https://placehold.co/100x100/F59E0B/FFFFFF?text=%E8%9B%8B%E6%8D%B2" alt="芝麻蛋捲" class="w-24 h-24 mb-4 rounded-full">
+                <h3 class="text-xl font-semibold text-gray-800 mb-1">芝麻蛋捲</h3>
+                <p class="text-gray-600 text-sm mb-2">濃郁芝麻香，層次豐富</p>
+                <p class="text-orange-600 text-2xl font-bold mb-2">NT$ 150/盒</p>
+                <p class="text-gray-500 text-xs mb-4">每盒12支裝</p>
+                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
+                    <div class="bg-orange-400 h-2.5 rounded-full" style="width: 4%;"></div>
+                </div>
+                <p class="text-gray-600 text-sm">已訂購: 4/100 盒</p>
+            </div>
+        </div> -->
 
         <!-- 填寫訂購資訊區塊 -->
         <div class="card p-6 md:p-8">
@@ -134,32 +167,11 @@
                 </div>
                 <div class="flex flex-wrap gap-4">
                     <button type="button" class="product-select-btn quantity-btn" data-product="原味蛋捲" data-price="120" id="btn-original">
-                        商品一 NT$ 120
+                        原味蛋捲 NT$ 120/盒
                     </button>
                     <button type="button" class="product-select-btn quantity-btn" data-product="芝麻蛋捲" data-price="150" id="btn-sesame">
-                        商品二 NT$ 150
-                    </button> <button type="button" class="product-select-btn quantity-btn" data-product="芝麻蛋捲" data-price="150" id="btn-sesame">
-                        商品三 NT$ 100
+                        芝麻蛋捲 NT$ 150/盒
                     </button>
-                     <button type="button" class="product-select-btn quantity-btn" data-product="芝麻蛋捲" data-price="150" id="btn-sesame">
-                        商品四 NT$ 100
-                    </button>
-                     <button type="button" class="product-select-btn quantity-btn" data-product="芝麻蛋捲" data-price="150" id="btn-sesame">
-                        商品五 NT$ 100
-                    </button>
-                     <button type="button" class="product-select-btn quantity-btn" data-product="芝麻蛋捲" data-price="150" id="btn-sesame">
-                        商品六 NT$ 100
-                    </button>
-                     <button type="button" class="product-select-btn quantity-btn" data-product="芝麻蛋捲" data-price="150" id="btn-sesame">
-                        商品七 NT$ 100
-                    </button>
-                     <button type="button" class="product-select-btn quantity-btn" data-product="芝麻蛋捲" data-price="150" id="btn-sesame">
-                        商品八 NT$ 100
-                    </button>
-                     <button type="button" class="product-select-btn quantity-btn" data-product="芝麻蛋捲" data-price="150" id="btn-sesame">
-                        商品九 NT$ 100
-                    </button>
-
                 </div>
                 <input type="hidden" id="selectedProduct" name="productSelection" required>
             </div>
@@ -171,9 +183,11 @@
                     選擇數量
                 </div>
                 <div class="flex flex-wrap gap-4">
-                    <button type="button" class="quantity-select-btn quantity-btn" data-quantity="1">1</button>
-                    <button type="button" class="quantity-select-btn quantity-btn" data-quantity="2">2</button>
-                    <button type="button" class="quantity-select-btn quantity-btn" data-quantity="3">3</button>
+                    <button type="button" class="quantity-select-btn quantity-btn" data-quantity="1">1盒</button>
+                    <button type="button" class="quantity-select-btn quantity-btn" data-quantity="2">2盒</button>
+                    <button type="button" class="quantity-select-btn quantity-btn" data-quantity="3">3盒</button>
+                    <button type="button" class="quantity-select-btn quantity-btn" data-quantity="4">4盒</button>
+                    <button type="button" class="quantity-select-btn quantity-btn" data-quantity="5">5盒</button>
                 </div>
                 <input type="hidden" id="selectedQuantity" name="quantity" required>
             </div>
@@ -199,7 +213,7 @@
     <script>
         // 請將此變數替換為您部署的 Google Apps Script Web App URL
         // 這個 URL 是您在部署 Apps Script 後從 Google 獲得的。
-        const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxOuhaCp8-YwdDyOeiUb0OS2-KIZuAgA8J72XKcWsl5yq3k2yoj5rGYsWSB3OIvXkDm/exec'; // <-- 請務必替換為您的 Web App URL
+        const GOOGLE_APPS_SCRIPT_WEB_APP_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'; // <-- 請務必替換為您的 Web App URL
 
         // 獲取 DOM 元素
         const customerNameInput = document.getElementById('customerName');
@@ -209,8 +223,9 @@
         const selectedQuantityInput = document.getElementById('selectedQuantity');
         const submitOrderBtn = document.getElementById('submitOrderBtn');
 
-        const originalProductCard = document.getElementById('original-product-card');
-        const sesameProductCard = document.getElementById('sesame-product-card');
+        // 移除對已刪除商品卡片的引用
+        // const originalProductCard = document.getElementById('original-product-card');
+        // const sesameProductCard = document.getElementById('sesame-product-card');
         const btnOriginal = document.getElementById('btn-original');
         const btnSesame = document.getElementById('btn-sesame');
 
@@ -240,15 +255,15 @@
         // 關閉彈窗按鈕事件
         closeMessageBox.addEventListener('click', hideMessageBox);
 
-        // 產品卡片點擊事件
-        originalProductCard.addEventListener('click', () => {
-            selectProduct('原味蛋捲', '120');
-        });
-        sesameProductCard.addEventListener('click', () => {
-            selectProduct('芝麻蛋捲', '150');
-        });
+        // 移除產品卡片點擊事件 (因為卡片已移除)
+        // originalProductCard.addEventListener('click', () => {
+        //     selectProduct('原味蛋捲', '120');
+        // });
+        // sesameProductCard.addEventListener('click', () => {
+        //     selectProduct('芝麻蛋捲', '150');
+        // });
 
-        // 選擇商品按鈕事件
+        // 選擇商品按鈕事件 (此部分保留，因為按鈕仍在)
         productSelectBtns.forEach(button => {
             button.addEventListener('click', () => {
                 selectProduct(button.dataset.product, button.dataset.price);
@@ -260,18 +275,14 @@
             selectedProduct = product;
             selectedProductInput.value = product; // 更新隱藏欄位值
 
-            // 移除所有產品卡片和按鈕的 selected 類別
-            originalProductCard.classList.remove('selected');
-            sesameProductCard.classList.remove('selected');
+            // 移除所有產品選擇按鈕的 selected 類別
             btnOriginal.classList.remove('selected');
             btnSesame.classList.remove('selected');
 
-            // 為選中的產品卡片和按鈕添加 selected 類別
+            // 為選中的產品按鈕添加 selected 類別
             if (product === '原味蛋捲') {
-                originalProductCard.classList.add('selected');
                 btnOriginal.classList.add('selected');
             } else if (product === '芝麻蛋捲') {
-                sesameProductCard.classList.add('selected');
                 btnSesame.classList.add('selected');
             }
         }
@@ -342,8 +353,9 @@
                 selectedQuantityInput.value = '';
                 productSelectBtns.forEach(btn => btn.classList.remove('selected'));
                 quantitySelectBtns.forEach(btn => btn.classList.remove('selected'));
-                originalProductCard.classList.remove('selected');
-                sesameProductCard.classList.remove('selected');
+                // 移除對已刪除卡片的 selected 類別操作
+                // originalProductCard.classList.remove('selected');
+                // sesameProductCard.classList.remove('selected');
 
             } catch (error) {
                 console.error('送出訂單時發生錯誤:', error);
